@@ -31,33 +31,27 @@ app.get("/", function(req, res) {
 });
 
 function post(url, form) {
-    request.post(url + '?key=' + authToken, {data: form}, function optionalCallback(err, httpResponse, body) {
-    if (err) {
-        return console.error('post failed:', err);
+    url = url + '?key=' + authToken;
+    console.log(url);
+    console.log(form);
+    request.post(
+    url,
+    { json: form },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var str = JSON.stringify(body, null, 2); 
+            console.log(str);
+        }
+        else {
+            console.log(error);
+            console.log(response);
+        }
     }
-    console.log('success, server response:', body);
-    return;
-    });
+    );
 }
 
 app.get("/analyze", function(req, res) {
-    params = {
-      "requests": [
-        {
-          "image": {
-            "source": {
-              "imageUri": "gs://snappy-dragon-3843/DSCF8969.jpg"
-            }
-          },
-          "features": [
-            {
-              "type": "LABEL_DETECTION"
-            }
-          ]
-        }
-      ]
-    };
-    return post('https://vision.googleapis.com/v1/images:annotate', _.flattenJSON(params));
+    return post('https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LANDMARK_DETECTION"}, {"maxResults": 10} ],"image":{"source":{"gcsImageUri": "gs://snappy-dragon-3843/DSCF8969.jpg"}}}]});
 });
 
 http.listen(PORT, function() {
