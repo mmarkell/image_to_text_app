@@ -17,7 +17,7 @@ $(document)
             duration: 500
         });
 
-        // show dropdown on hover
+        // show dropdown on hover2
         $('.main.menu  .ui.dropdown').dropdown({
             on: 'hover'
         });

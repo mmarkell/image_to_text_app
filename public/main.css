@@ -61,6 +61,23 @@
      margin: 5em 0em 0em;
      padding: 5em 0em;
  }
+
+ .ui.segment {
+     height: 400px;
+ }
+
+.ui.future {
+     height: 100%;
+     width: 100%;
+ }
+
+ .ui.little {
+     max-height: 80px;
+ }
+
+ .ui.side {
+     max-height:300px;
+ }
  
  td {
      vertical-align: top !important;

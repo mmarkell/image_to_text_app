@@ -27,31 +27,27 @@ io.on('connection', function(socket) {
 });
 
 app.get("/", function(req, res) {
-    res.render('upload')
+    res.render('upload');
 });
 
-function post(url, form) {
+function post(res, url, form) {
     url = url + '?key=' + authToken;
-    console.log(url);
-    console.log(form);
-    request.post(
-    url,
-    { json: form },
-    function (error, response, body) {
+    x = request.post(url, { json: form }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var str = JSON.stringify(body, null, 2); 
+            var str = JSON.stringify(body.responses[0].landmarkAnnotations[0].description
+, null, 2); 
             console.log(str);
+            res.render('upload', {bodies: str});
         }
         else {
-            console.log(error);
-            console.log(response);
+            console.log('hi');
+            return error;
         }
-    }
-    );
+    });
 }
 
 app.get("/analyze", function(req, res) {
-    return post('https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LANDMARK_DETECTION"}, {"maxResults": 10} ],"image":{"source":{"gcsImageUri": "gs://snappy-dragon-3843/DSCF8969.jpg"}}}]});
+    post(res, 'https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LANDMARK_DETECTION"}, {"maxResults": 10} ],"image":{"source":{"gcsImageUri": "gs://snappy-dragon-3843/DSCF8969.jpg"}}}]});
 });
 
 http.listen(PORT, function() {

@@ -7,9 +7,10 @@
 <br>
 
 <div class="ui text container segment">
-  <img src="" height="200" alt="Your beautiful image">
+  <img class = "ui future" src="" height="200" alt="Your beautiful image">
+
   <div class="ui right very close rail">
-    <div class="ui segment">
+    <div class="ui side segment">
       <h4>Try uploading an image!</h4>
       <h5>When you upload an image, we will do our best to generate a descriptive caption of that image.</h5>
           <input type="file" onchange="previewFile()"><br>
@@ -29,10 +30,20 @@
              preview.src = "";
          }
       }
+
+      function print() {
+        console.log("hi");
+      }
     
     </script>
    
     </div>
   </div>
+</div>
+<div class="ui text container little segment">
+    <a href='/analyze' id='mylink'> Describe my picture!</a>
+</div>
+<div class="ui text container segment">
+  <h1> {{ bodies }}</h1>
 </div>
 <br>
