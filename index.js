@@ -46,7 +46,7 @@ function post(res, url, form) {
     });
 }
 
-app.get("/analyze", function(req, res) {
+app.post("/", function(req, res) {
     post(res, 'https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LANDMARK_DETECTION"}, {"maxResults": 10} ],"image":{"source":{"gcsImageUri": "gs://snappy-dragon-3843/DSCF8969.jpg"}}}]});
 });
 

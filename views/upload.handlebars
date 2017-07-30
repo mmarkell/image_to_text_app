@@ -1,19 +1,16 @@
-<div class="ui main menu">
-  	<div class="ui text container">
-  	  <a href="/" class="active item">Give your image a title!</a>
-    </div>
-</div>
 
 <br>
 
 <div class="ui text container segment">
-  <img class = "ui future" src="" height="200" alt="Your beautiful image">
-
+  <img class = "ui future" src="">
   <div class="ui right very close rail">
-    <div class="ui side segment">
+    <div class="ui segment">
       <h4>Try uploading an image!</h4>
       <h5>When you upload an image, we will do our best to generate a descriptive caption of that image.</h5>
           <input type="file" onchange="previewFile()"><br>
+      <form action="/" method="post">
+        <button name="describify">Describe my picture!</button>
+      </form>
      <script>
 
      function previewFile() {
@@ -30,20 +27,15 @@
              preview.src = "";
          }
       }
-
-      function print() {
-        console.log("hi");
-      }
     
     </script>
    
     </div>
   </div>
 </div>
-<div class="ui text container little segment">
-    <a href='/analyze' id='mylink'> Describe my picture!</a>
-</div>
-<div class="ui text container segment">
+
+<br>
+
+<div class="ui container bottom segment">
   <h1> {{ bodies }}</h1>
 </div>
-<br>
