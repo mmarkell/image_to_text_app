@@ -1,7 +1,18 @@
+header {
+     position: absolute;
+     width:100%;
+     background-color: white;
+     top: 0%;
+     left: 0%;
+     height:50px;
+     font-size:20px;
+}
 
  body {
      background-color: #bfe2f8;
      width:80%;
+     max-zoom: 150%;
+
  }
  
  form {
@@ -101,12 +112,10 @@ a {
  }
  
  .ui.bottom {
-     width: 80%;
+     width: 71%;
      max-height: 200px;
      position: absolute;
-     top: 50%;
-     left: 11%;
-     width: 80%;
+     left: 15.5%;
      height: 200px;
  }
  td {
