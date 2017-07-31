@@ -9,6 +9,7 @@ header {
 }
 
  body {
+     padding-top:40px;
      background-color: #bfe2f8;
      width:80%;
      max-zoom: 150%;
@@ -16,7 +17,7 @@ header {
  }
  
  form {
-     padding:70px;
+     padding-top:40%;
  }
 
  form:focus {
@@ -103,8 +104,10 @@ a {
  }
 
 .ui.future {
-     height: 100%;
-     width: 100%;
+     max-height: 100%;
+     max-width: 100%;
+     display:block;
+     margin:auto;
  }
 
  .ui.little {
