@@ -6,7 +6,7 @@ var expstate = require('express-state');
 var request = require('request');
 var _ = require('lodash');
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
