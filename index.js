@@ -29,7 +29,7 @@ app.use(multer({dest:'./temp/images/'}).single('imageUpload'));
 expstate.extend(app);
 
 app.set('state namespace', 'App');
-var authToken = require('./config').auth;
+var authToken = process.env.GCV_SECRET///require('./config').auth;
 
 io.on('connection', function(socket) {
     console.log('new connection.');
