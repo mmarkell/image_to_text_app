@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-    var imageFile = fs.readFileSync('temp/images/image.png');
+    var imageFile = fs.readFileSync('./temp/images/' + req.connection.remoteAddress);
     var encoded = new Buffer(imageFile).toString('base64');
     postAnnotation(res, 'https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LABEL_DETECTION"}, {"maxResults": 10} ],"image":{"content":encoded}}]});
 });
@@ -48,7 +48,7 @@ app.post("/", function(req, res) {
 app.post("/upload", function(req, res) {
     if (req.file != undefined) {
         var tempPath = req.file.path;
-        var target_path = 'temp/images/image.png';
+        var target_path = './temp/images/' + req.connection.remoteAddress;
         var src = fs.createReadStream(tempPath);
         var dest = fs.createWriteStream(target_path);
         src.pipe(dest);
@@ -61,7 +61,7 @@ app.post("/upload", function(req, res) {
 });
 
 app.get("/image.png", function (req, res) {
-    res.sendFile(path.resolve('./temp/images/image.png'));
+    res.sendFile(path.resolve('./temp/images/' + req.connection.remoteAddress));
 }); 
 
 function postAnnotation(res, url, form) {

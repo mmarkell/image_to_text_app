@@ -20,6 +20,12 @@ header {
      padding-top:40%;
  }
 
+ .below {
+     float: bottom;
+     position: absolute;
+     padding-top: 2%;
+ }
+
  form:focus {
      border-color:#333;
  }
@@ -116,10 +122,10 @@ a {
  
  .ui.bottom {
      width: 71%;
-     max-height: 200px;
+     max-height: 150px;
      position: absolute;
      left: 15.5%;
-     height: 200px;
+     height: 150px;
  }
  td {
      vertical-align: top !important;
