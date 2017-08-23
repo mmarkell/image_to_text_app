@@ -1,32 +1,32 @@
 <header>
   <center style="padding-top: 10px">
-  this is just for fun
+  Try uploading an image!
   </center>
 </header>
 <br>
 
-<div class="ui text container segment">
-  <img class = "ui future" src="/image.png">
-  <div class="ui right very close rail">
-    <div class="ui container segment">
-      <h4>Try uploading an image!</h4>
-      <h5>When you upload an image, we will do our best to generate a descriptive caption of that image.</h5>
-      <form method="post" enctype="multipart/form-data" action="/upload">
-          <input type="file" name="imageUpload">
-          <input type="submit" value="Upload">
-      </form>
-    </div>
+<div class="block1">
+  <div class="open_text block-item1" >
+    <h5>When you upload an image, we will do our best to generate a descriptive caption of that image.</h5>
   </div>
-  <br>
-  <div class="ui text container below">
-    <form action="/" method="post">
-      <button name="describify">Describe my picture!</button>
-    </form>
-  </div>
-  <br>
 </div>
-<div class="ui container bottom segment">
-  <h1> 
-    {{ bodies }}
-  </h1>
+
+<div class="block">
+   <div class="block-item">    
+      <img class = "" src="/image.png">
+      <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="imageUpload">
+        <input type="submit" value="Upload">
+      </form>
+      
+      <form action="/" method="post">
+        <button name="describify">Describe my picture!</button>
+      </form>
+  </div>
+  <div class="block-item">
+    <h1> 
+      {{!-- {{ bodies }} --}}
+       nothing  | at | all | nothing | nothing | nothing
+    </h1>
+  </div>
 </div>
