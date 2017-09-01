@@ -13,9 +13,6 @@ var io = require('socket.io')(http);
 var multer  = require('multer');
 var upload = multer({ dest: 'temp/images'});
 var fs = require('fs');
-
-/** Permissible loading a single file, 
-    the value of the attribute "name" in the form of "recfile". **/
 var type = upload.single('imageUpload');
 var path = require('path');
 
@@ -40,6 +37,7 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
+    console.log("hi");
     var imageFile = fs.readFileSync('./temp/images/' + req.connection.remoteAddress);
     var encoded = new Buffer(imageFile).toString('base64');
     postAnnotation(res, 'https://vision.googleapis.com/v1/images:annotate', { "requests":[{ "features":[{"type": "LABEL_DETECTION"}, {"maxResults": 10} ],"image":{"content":encoded}}]});
@@ -56,7 +54,7 @@ app.post("/upload", function(req, res) {
     }
     else {
         console.log("failed");
-        res.render('upload');
+        res.render('upload', {bodies: "something went wrong :("});
     }
 });
 
@@ -66,15 +64,17 @@ app.get("/image.png", function (req, res) {
 
 function postAnnotation(res, url, form) {
     url = url + '?key=' + authToken;
+    console.log(form);
     x = request.post(url, { json: form }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var descriptions = getDescriptions(body, 'labelAnnotations');
-            res.render('upload', {bodies: descriptions});
+            var labelAnnotations = getDescriptions(body, 'labelAnnotations');
+            // var whatever = getDescriptions(body, "whatever");
+            // res.render('upload', {bodies: surfaceTopResults([labelAnnotations, whatever])});
+            res.render('upload', {bodies: labelAnnotations});
             return;
         }
         else {
             console.log(error);
-            console.log(response.statusCode);
             res.render('upload');
             return error;
         }
@@ -100,6 +100,10 @@ function getDescriptions(body, feature) {
     }
     return jsonDescriptions;
 }
+
+// function surfaceTopResults(labels) {
+//     labels = _.flatmap(labels).sort(relevance(x)).pick(10);
+// }
 
 http.listen(PORT, function() {
     console.log('Example app listening on port 3000!');

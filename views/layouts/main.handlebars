@@ -9,19 +9,41 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
+
+<header>
+  <center>
+    <a> Describify </a>  
+  </center>
+</header>
+
 <body>
-<!--  //    Handlebars.registerHelper("loadDescriptions", function(bodies) {
- //      var html = "<ul>";
- //      bodies.forEach(function(entry) {
- //        html += "<li>" + entry + "</li>";
- //      });
- //      html += "</ul>";
- //      return html;
- //    }); -->
-    <br>
-     {{{body}}}
+  <div class="block1">
+    <div class="open_text block-item1" >
+      <h5>
+        Upload a pic, get a description :)
+      </h5>
+    </div>
+  </div>
+
+ <form method="post" enctype="multipart/form-data" action="/upload">
+          <input type="file" name="imageUpload">
+          <input type="submit" value="Upload">
+  </form>
+
+  <form class="formm" action="/" method="post">
+      <button name="describify">Describe my picture!</button>
+  </form>
+  
+  <div class="block">  
+      <img src="/image.png"></img>
+    <div class="block-item">
+      <h1> 
+        {{ bodies }}
+      </h1>
+    </div>
+  </div>
 </body>
-{{{state}}}
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
 <script src="/public/main.js"></script>
 

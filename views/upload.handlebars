@@ -1,32 +1,33 @@
 <header>
-  <center style="padding-top: 10px">
-  Try uploading an image!
+  <center>
+    <a> Describify </a>  
   </center>
 </header>
-<br>
 
-<div class="block1">
-  <div class="open_text block-item1" >
-    <h5>When you upload an image, we will do our best to generate a descriptive caption of that image.</h5>
+  <div class="block1">
+    <div class="open_text block-item1" >
+      <h5>
+        Upload a pic, get a description :)
+      </h5>
+    </div>
   </div>
-</div>
 
-<div class="block">
-   <div class="block-item">    
-      <img class = "" src="/image.png">
-      <form method="post" enctype="multipart/form-data" action="/upload">
-        <input type="file" name="imageUpload">
-        <input type="submit" value="Upload">
-      </form>
-      
-      <form action="/" method="post">
-        <button name="describify">Describe my picture!</button>
-      </form>
+ <form method="post" enctype="multipart/form-data" action="/upload">
+          <input type="file" name="imageUpload">
+          <input type="submit" value="Upload">
+  </form>
+
+  <form class="formm" action="/" method="post">
+      <button name="describify">Describe my picture!</button>
+  </form>
+  
+  <div class="block">  
+      <img src="/image.png"></img>
+    <div class="block-item">
+      <h1> 
+        {{ bodies }}
+      </h1>
+    </div>
   </div>
-  <div class="block-item">
-    <h1> 
-      {{!-- {{ bodies }} --}}
-       nothing  | at | all | nothing | nothing | nothing
-    </h1>
-  </div>
-</div>
+
+
